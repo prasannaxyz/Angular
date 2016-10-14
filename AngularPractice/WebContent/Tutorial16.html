@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+<meta charset="ISO-8859-1">
+<title>Tutorial16 : ng-include directive</title>
+<script src="js/angular.min.js"></script>
+<script src="script/Tutorial16Script.js"></script>
+<link href="css/styles16.css" rel="stylesheet" />
+</head>
+<body ng-controller="myController">
+	Select View:
+	<select ng-model="employeeView">
+	  <option value="EmployeeTable.html">Table</option>
+	  <option value="EmployeeList.html">list</option>
+	</select><br/><br/>
+	<div ng-include="employeeView"> </div>
+</body>
+</html>

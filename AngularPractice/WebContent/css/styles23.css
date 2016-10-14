@@ -1,0 +1,28 @@
+.leftMenu{
+	
+	height:500px;
+	background-color:#D8D8D8;
+	width:150px
+	
+}
+
+.header{
+	
+	width:900px;
+	height:80px;
+	background-color:#BDBDBD;
+	text-align:center;
+}
+
+.mainContent{
+	height:500px;
+	background-color:
+	#E6E6E6;
+	width:650px
+}
+
+.footer{
+	
+	background-color:#BDBDBD;
+	text-align:center;
+}

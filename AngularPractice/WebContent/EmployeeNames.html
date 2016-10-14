@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Displaying employee names</title>
+</head>
+<body>
+<h3>Employees</h3>
+<ul>
+<li ng-repeat="employee in employees">
+
+  <a href="#/employees/{{employee.empNo}}/{{employee.name}}">{{employee.name}}</a>
+  
+</li>
+</ul>
+
+
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html ng-app="sampleapp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+  <script src="js/angular.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+<script type="text/javascript">
+	var myapp = angular.module('sampleapp', []);
+
+	myapp.controller('samplecontoller', function($scope,$http) {
+
+		$scope.showData = function() {
+
+			$scope.curPage = 1;
+			$http.get("service/person/getPersons/1").then(
+					function(response) {
+						$scope.datalists  = response.data;
+						
+					});
+			
+		}
+		$scope.next = function() {
+			$scope.curPage=$scope.curPage+1;
+			$http.get("service/person/getPersons/"+$scope.curPage).then(
+					function(response) {
+						$scope.datalists  = response.data;
+						if($scope.datalists.length!=4)
+						$scope.nextPage=0;
+					});
+			
+			
+	    }
+		$scope.previous = function() {
+			$scope.curPage=$scope.curPage-1;
+			$scope.nextPage=1;
+			$http.get("service/person/getPersons/"+$scope.curPage).then(
+					function(response) {
+						$scope.datalists  = response.data;
+					});
+	    }
+
+	});
+
+	
+</script>
+
+<style>
+.paginationclass {
+	margin: 19px 28px;
+}
+
+.paginationclass span {
+	margin-left: 15px;
+	display: inline-block;
+}
+
+.pagination-controle li {
+	display: inline-block;
+}
+
+.pagination-controle button {
+	font-size: 12px;
+	margin-top: -26px;
+	cursor: pointer;
+}
+
+.pagination {
+	margin: 5px 12px !important;
+}
+</style>
+</head>
+<body align="center">
+
+	<div ng-app="sampleapp">
+		<div ng-controller="samplecontoller" ng-init="showData()">
+
+
+			<ul>
+				<ul class="paginationclass" style="font-weight: bold;"><span>Name</span><span>Age</span><span>Designation</span></ul>
+				<li class="paginationclass"
+					ng-repeat="datalist in datalists | limitTo: 3">
+					<div>
+						<span>{{ datalist.name }} </span><span>{{ datalist.age }}</span><span>{{
+							datalist.designation }}</span>
+					</div>
+				</li>
+			</ul>
+
+			<div class="pagination pagination-centered">
+				<ul class="pagination-controle pagination">
+					<li>
+						<button type="button" class="btn btn-primary" ng-disabled="curPage == 1"
+							ng-click="previous()">
+							&lt; PREV</button>
+					</li>
+					<li><span>Page {{curPage}} </span>
+					</li>
+					<li>
+						<button type="button" class="btn btn-primary"
+							ng-click="next()" ng-disabled="nextPage==0">NEXT &gt;</button>
+					</li>
+				</ul>
+			</div>
+
+
+
+		</div>
+	</div>
+
+
+</body>
+</html>

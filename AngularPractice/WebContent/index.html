@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+<meta charset="ISO-8859-1">
+<title>Beneficiary Details</title>
+
+<script src="js/angular.min.js"></script>
+<script src="js/customJS/beneficiary.js"></script>
+<link rel="stylesheet" type="text/css" href="css/table.css">
+
+</head>
+
+<body ng-controller="myController">
+
+ <div>
+	<table id="keywords">
+		<thead>
+			<tr>
+				<th ng-click="sortData('beneficiaryName')">Beneficiary Name</th>
+				<th ng-click="sortData('accountNo')">Account Number</th>
+				<th ng-click="sortData('branch')">Branch</th>
+				<th ng-click="sortData('bank')">Bank</th>
+				<th ng-click="sortData('limit')">Limit</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr ng-repeat="beneficiary in beneficiaries | orderBy: sortColumn : sortOrder">
+			<td class="lalign">{{beneficiary.beneficiaryName}} </td>
+			<td>{{beneficiary.accountNo}} </td>
+			<td>{{beneficiary.branch}}</td>
+			<td>{{beneficiary.bank}}</td>
+			<td>{{beneficiary.limit}}</td>
+			</tr>
+		</tbody>
+		
+		<tfoot>
+		<tr>
+		 <td>
+			
+		 </td>	
+		</tr>
+		</tfoot>
+
+	</table>
+  </div>	
+
+</body>
+</html>

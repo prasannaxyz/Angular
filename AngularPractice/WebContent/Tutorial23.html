@@ -1,0 +1,44 @@
+<!-- ref:https://www.youtube.com/watch?v=MpJILRPVen8&index=146&list=PL6n9fhu94yhXQS_p1i-HLIftB9Y7Vnxlo -->
+<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+<meta charset="ISO-8859-1">
+<title>Tutorial16 : ng-include directive</title>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+<script src="script/Tutorial23.js"></script>
+<link href="css/styles23.css" rel="stylesheet" />
+<link href="css/styles16.css" rel="stylesheet" />
+</head>
+<body ng-controller="myController">
+
+	<form id="form1">
+
+		<table style="font-family: Arial">
+			<tr>
+				<td colspan="2" class="header"><h1>{{header}}</h1></td>
+			</tr>
+			<tr>
+				<td class="leftMenu">
+				<a href="#/home">Home</a><br/>
+				<a href="#/employeesTable">Employees Table</a><br/>
+				<a href="#/employeesList">Employees List</a>
+				<a href="#/employees">Employees</a>
+				</td>
+				<td class="mainContent">
+					<ng-view></ng-view>
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2" class="footer"><b>{{footer}}</b></td>
+			</tr>
+
+
+		</table>
+        
+
+	</form>
+
+</body>
+</html>
